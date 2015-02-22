@@ -2,23 +2,27 @@ hubot-harvest
 =============
 
 A fork of the [community harvest script](https://github.com/github/hubot-scripts/blob/master/src/scripts/harvest.coffee)
-with additional support for one-way synchronisation of timesheets to an external Harvest account. This scratches our itch quite well when working for a client through a middleman. Most of agencies use Harvest, like us, for time tracking and invoicing.
+with additional support for one-way synchronisation of timesheets to an external Harvest account. This scratches our itch quite well when working for a client through a middleman. Most agencies use Harvest, like us, for time tracking and invoicing.
 
 The problem this plugin solves is quite precise and the implementation is as well so it may not be useful to you. Here are the details:
 
-* Only supports one-way synchronisation from your Harvest account to another Harvest account.
-* Supports syncing to multiple external Harvest accounts.
+* Only supports one-way synchronisation from your Harvest account other Harvest accounts.
 * Supports syncing project to project (1-to-1 for now), task to task, or all tasks to one task.
 * Uses the saved credentials of your chat user to query timesheets to sync. Needs to be admin.
 * Uses global saved credentials for external accounts, to query and save changes on the other side.
-* One Harvest user for each external Harvest domain. Does not need to have admin access there.
+* Only one Harvest user for each external Harvest domain. Does not need to have admin access there. This user will own all synced hours on the other side.
 
 ## Setup
 
-In your hubot-config, install this script with `npm i hubot-harvest-sync --save`.
-Add it to a `external-scripts.json` file in the root of your config like this:
+In your hubot-config folder, install this script:
 
+```bash
+npm i hubot-harvest-sync --save`
 ```
+
+Add this script to your `external-scripts.json` file in the root of the config folder like this:
+
+```bash
 ["hubot-harvest-sync"]
 ```
 
@@ -26,7 +30,7 @@ Then restart or redeploy your hubot.
 
 ## Use
 
-Then just chat with your hubot:
+After setup, just chat with your hubot:
 
 ```
 # Configure source account. Admin. Associated with your chat user. 
