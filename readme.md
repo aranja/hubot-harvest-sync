@@ -17,7 +17,7 @@ The problem this plugin solves is quite precise and the implementation is as wel
 In your hubot-config folder, install this script:
 
 ```bash
-npm i hubot-harvest-sync --save`
+npm i hubot-harvest-sync --save
 ```
 
 Add this script to your `external-scripts.json` file in the root of the config folder like this:
