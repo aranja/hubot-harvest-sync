@@ -1,6 +1,6 @@
 {
   "name": "hubot-harvest-sync",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A harvest script for hubot which supports syncing timesheets with an external account.",
   "main": "index.coffee",
   "scripts": {
