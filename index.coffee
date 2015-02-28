@@ -168,10 +168,6 @@ date_plus_days = (days) ->
   date.setDate(date.getDate() + days)
   date
 
-# Parses an email argument, fixing up issues with the hubot-slack adapter.
-parse_email = (email) ->
-  email.replace(/\s*mailto:.+/i, '')
-
 # Issues an empty GET request to harvest to test whether the service is
 # available at the moment. The callback gets passed an exception object
 # describing the connection error; if everything is fine it gets passed
@@ -205,7 +201,7 @@ module.exports = (robot) ->
 
   # Provide facility for saving the account credentials.
   robot.respond /remember my harvest account (.+) with password (.+)/i, (msg) ->
-    account = new HarvestAccount parse_email(msg.match[1]), msg.match[2]
+    account = new HarvestAccount msg.match[1], msg.match[2]
     harvest = new HarvestService(account)
 
     # If the credentials are valid, remember them, otherwise
@@ -327,7 +323,7 @@ module.exports = (robot) ->
   # Sets up a migration account at a third party harvest app.
   # This is used to sync timesheets using the following commands.
   robot.respond /remember a harvest migration account (.+) with password (.+) at (.+)/i, (msg) ->
-    account = new HarvestAccount parse_email(msg.match[1]), msg.match[2], msg.match[3]
+    account = new HarvestAccount msg.match[1], msg.match[2], msg.match[3]
     harvest = new HarvestService(account)
 
     # If the credentials are valid, remember them, otherwise
